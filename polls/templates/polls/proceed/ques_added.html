@@ -1,0 +1,18 @@
+<h2>{{ q }}</h2> Your question has been added successfully<br><br>
+{% if less %}
+    You are short of {{ less }} choices
+{% endif %}
+{% if list %}
+    <h1>Pls enter your preferred choices for the question</h1>
+    <form action="{% url 'polls:choice_form' %}" method="post">
+    {% csrf_token %}
+        {% for i in list %}
+            <input type="text" placeholder="choice{{ forloop.counter }}" name="choice{{ forloop.counter }}"><br><br>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+{% else %}
+    <a href="{% url 'polls:index' %}">Back to voting page</a>
+{% endif %}
+

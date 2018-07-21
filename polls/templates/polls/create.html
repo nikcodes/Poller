@@ -1,0 +1,29 @@
+<title>New Question</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' type='text/css' href="style.css">
+
+<div class="container-fluid">
+    <form action="{% url 'polls:create' %}" method="post">
+    {% csrf_token %}
+        Enter your question
+        <br>
+        <input type="text" name="ques" placeholder="What's your question">
+        {% if sub %}
+            <sub>{{ sub }}</sub>
+        {% endif %}
+        <br><br>
+        Enter the date you want others to see as its publication date<br>
+        <input type="date" name="date"><br><br></br>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#nik">
+            Want to give choice
+        </button><br><br>
+        <input type="number" id="nik" name="number" class="collapse" placeholder="how much?"><br><br>
+        <button type="submit" class="btn btn-outline-success">Proceed</button>
+    </form>
+</div>
+

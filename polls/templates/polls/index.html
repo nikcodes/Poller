@@ -1,0 +1,7 @@
+<h2>Here are all of the questions</h2>
+{% for q in qlist %}
+    <a href={% url 'polls:detail' q.id %}>{{ q.question_text }}</a><br>
+{% endfor %}
+<br><br>
+<a href={% url 'polls:create' %}>Make your own question instead</a>
+
